@@ -6,7 +6,7 @@
 /*   By: jsalmi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 11:49:45 by jsalmi            #+#    #+#             */
-/*   Updated: 2020/09/16 17:01:09 by jsalmi           ###   ########.fr       */
+/*   Updated: 2020/09/24 15:12:20 by jsalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ void	ui_clean(t_window *win, t_element *elem)
 
 	if (elem->parent_elem == NULL)
 	{
-		temp.x1 = elem->coord.x;
-		temp.y1 = elem->coord.y;
+		temp.x1 = ft_clamp(elem->coord.x, 0, elem->parent->w);
+		temp.y1 = ft_clamp(elem->coord.y, 0, elem->parent->h);
 		temp.x2 = ft_clamp(temp.x1 + elem->surface->w, 0, win->surface->w);
 		temp.y2 = ft_clamp(temp.y1 + elem->surface->h, 0, win->surface->h);
 		// this while loop is faster than the ft_create_square
 		while (temp.x1 < temp.x2)
 		{
-			temp.y1 = elem->coord.y;
+			temp.y1 = ft_clamp(elem->coord.y, 0, elem->parent->h); // why this?
 			while (temp.y1 < temp.y2)
 			{
 				set_pixel(win->surface, temp.x1, temp.y1,  win->bg_color);
