@@ -7,9 +7,9 @@
 # include <string.h>
 # include "libft.h"
 # include "ft_printf.h"
-# include "SDL2/SDL.h"
-# include "SDL2/SDL_ttf.h"
-# include "SDL2/SDL_image.h"
+# include "SDL2/includes/SDL.h"
+# include "SDL2/includes/SDL_ttf.h"
+# include "SDL2/includes/SDL_image.h"
 # include <dirent.h>
 
 typedef struct	s_window_info	t_window_info;
