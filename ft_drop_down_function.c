@@ -6,7 +6,7 @@
 /*   By: jsalmi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 16:54:31 by jsalmi            #+#    #+#             */
-/*   Updated: 2020/09/16 17:22:47 by jsalmi           ###   ########.fr       */
+/*   Updated: 2020/09/26 16:28:34 by jsalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	ft_drop_item_function(SDL_Event e, t_element *elem)
 	for (int i = 0; i < dd->item_amount; i++)
 	{
 		dd->items[i]->state = 0;
-		ft_update_element(dd->items[i]);
+		dd->items[i]->default_state = 0;
 	}
 	elem->state = 1;
-	ft_update_element(elem);
+	elem->default_state = 1;
 	ft_update_drop(elem->parent_elem);
 }
 
@@ -62,8 +62,14 @@ void	ft_drop_down_function(SDL_Event e, t_element *elem)
 	if (e.type == SDL_MOUSEBUTTONDOWN)
 	{
 		if (elem->state == 1)
+		{
 			for (int i = 0; i < dd->item_amount; i++)
+			{
+				dd->items[i]->coord.x = elem->coord.x + dd->items[i]->rel_coord.x;
+				dd->items[i]->coord.y = elem->coord.y + dd->items[i]->rel_coord.y;
 				dd->items[i]->event_handler(e, dd->items[i]);
+			}
+		}
 		if (elem->state == 0)
 		{
 			elem->coord.h = dd->drop_height;
