@@ -33,7 +33,6 @@ SRCS = ft_test_libui.c\
 	   file_handling.c\
 	   ui_create_drop.c\
 	   ft_drop_down_function.c\
-	   ft_strjoiner.c\
 	   ft_default_elem_info.c\
 	   ft_set_icon.c\
 	   ft_default_text.c\
@@ -56,7 +55,8 @@ SRCS = ft_test_libui.c\
 	   popup_help.c\
 	   extra_help.c
 OBJS = $(SRCS:.c=.o)
-LIBS = libui.h
+LIBS = libui.h \
+	   ft_printf.h
 #FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)

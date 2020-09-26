@@ -6,7 +6,7 @@
 /*   By: jsalmi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 16:38:36 by jsalmi            #+#    #+#             */
-/*   Updated: 2020/09/17 13:16:21 by jsalmi           ###   ########.fr       */
+/*   Updated: 2020/09/26 13:39:28 by jsalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void		ft_update_element(t_element *elem)
 			elem->text.parent = elem->surface;
 			ft_create_text(&elem->text);
 		}
+		elem->state = elem->default_state;
 	}
 }

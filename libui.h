@@ -199,7 +199,6 @@ char			*drag_and_drop(SDL_Event e);
 SDL_Surface		*load_image(char *file);
 int				save_image(SDL_Surface *img, char *file);
 void			ft_read_text(t_element *elem, int size);
-char			*ft_strjoiner(char *first, ...);
 void			notify(char *title, char *msg);
 void			error_msg(char *str);
 void			text_area(SDL_Event e, t_element *elem);
@@ -296,5 +295,7 @@ void			ft_event_poller(t_libui *libui);
 void			ft_drop_item_function(SDL_Event e, t_element *elem);
 void			ft_button_handler(SDL_Event e, t_element *elem);
 void			default_click(SDL_Event e, t_element *elem);
+void			single_click(SDL_Event e, t_element *elem);
+void			toggle_click(SDL_Event e, t_element *elem);
 int				ft_keyboard_handler(t_libui *libui);
 #endif
