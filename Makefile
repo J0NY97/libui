@@ -62,7 +62,7 @@ LIBS = libui.h
 all: $(NAME)
 
 $(NAME):
-	@gcc -c $(SRCS) $(FLAGS)
+	@gcc -c $(SRCS) $(FLAGS) -I ../libft -I ../include -I ../ft_printf
 	@ar rc $(NAME) $(OBJS) 
 	@ranlib $(NAME)
 	@/bin/rm -f $(OBJS)
