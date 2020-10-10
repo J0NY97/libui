@@ -88,6 +88,7 @@ struct	s_element_info
 
 struct	s_element
 {
+	int			render;
 	int			state; //0 = press, 1 = hover, 2 = click
 	int			default_state;
 	int			statique;
@@ -159,7 +160,7 @@ struct			s_window_info
 	int			h;
 	int			flags;
 	int			resizeable;
-	int			bg_color;	
+	int			bg_color;
 };
 
 struct s_window
@@ -267,7 +268,7 @@ void			ft_update_slider_bar(int click_x, int click_y, t_element *elem);
 void			ft_update_drop(t_element *elem);
 void			ft_drop_down_function(SDL_Event e, t_element *elem);
 void			ft_set_slider_value(t_element *elem, int new_value);
-void			ft_set_element_image(t_element *elem, SDL_Surface *img);
+void			ft_set_element_image(t_element *elem, SDL_Surface *img, SDL_Rect *rect);
 void			ft_set_font(t_text *text, char *font, int size);
 void			ft_set_text(t_text *text, char *txt);
 void			ft_update_elem_background(t_element *elem, Uint32 color);

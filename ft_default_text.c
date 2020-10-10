@@ -20,12 +20,12 @@ void	ft_default_text(t_text *text, char *txt)
 	text->parent = NULL;
 	if (txt != NULL)
 	{
-		text->set_text = 1;	
+		text->set_text = 1;
 		text->text = ft_strdup(txt);
 	}
 	else
 		text->text = NULL;
-	text->color = 0x000000;
+	text->color = 0xff000000;
 	text->margin = 0;
-	ft_set_font(text, "font.ttf", 28);
+	ft_set_font(text, "../libui/TTF/font.ttf", 28); // figure out how it takes the font from libui and not the current dir
 }

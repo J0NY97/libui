@@ -12,17 +12,11 @@
 
 #include "libui.h"
 
-void	ft_set_element_image(t_element *elem, SDL_Surface *img)
+void	ft_set_element_image(t_element *elem, SDL_Surface *img, SDL_Rect *rect)
 {
-	SDL_Rect temp;
-
 	elem->text.set_text = 0; // you might wnat to free the whole t_text from this elem
-	temp.h = elem->surface->h;
-	temp.w = temp.h;
-	temp.x = temp.w / 2;
-	temp.y = 0;
-	SDL_BlitScaled(img, NULL, elem->states[0], &temp);
-	SDL_BlitScaled(img, NULL, elem->states[2], &temp);
-	SDL_BlitScaled(img, NULL, elem->states[1], &temp);
-	SDL_BlitScaled(img, NULL, elem->surface, &temp);
+	SDL_BlitScaled(img, NULL, elem->states[0], rect);
+	SDL_BlitScaled(img, NULL, elem->states[2], rect);
+	SDL_BlitScaled(img, NULL, elem->states[1], rect);
+	SDL_BlitScaled(img, NULL, elem->surface, rect);
 }

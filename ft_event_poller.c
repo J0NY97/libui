@@ -21,7 +21,7 @@ void	call_all_element_event_handlers(t_libui *libui, t_window *win)
 	while (curr != NULL)
 	{
 		elem = curr->content;
-		if (elem->event_handler)
+		if (elem->render && elem->event_handler)
 			elem->event_handler(libui->event, elem);
 		curr = curr->next;
 	}
@@ -30,7 +30,7 @@ void	call_all_element_event_handlers(t_libui *libui, t_window *win)
 void	ft_event_poller(t_libui *libui)
 {
 	t_list *win;
-	
+
 	while(SDL_PollEvent(&libui->event))
 	{
 		if (libui->event.type == SDL_QUIT)

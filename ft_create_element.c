@@ -28,6 +28,7 @@ t_element		*ft_create_element(t_element_info info)
 	}
 	else
 		elem->info = info.info;
+	elem->render = 1;
 	elem->shadow = info.shadow;
 	elem->bg_color = info.bg_color;
 	elem->extra_info = info.extra_info;

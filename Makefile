@@ -61,9 +61,9 @@ LIBS = libui.h \
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRCS)
 	@gcc -c $(SRCS) $(FLAGS) -I ../libft -I ../include -I ../ft_printf
-	@ar rc $(NAME) $(OBJS) 
+	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@/bin/rm -f $(OBJS)
 	@echo "$(NAME) was successfully created."

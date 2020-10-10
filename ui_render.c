@@ -17,8 +17,8 @@ void	ui_create_shadow(t_element *elem)
 	SDL_Rect	temp;
 	SDL_Surface	*shadow;
 	t_shapes l;
-	
-	temp.w = elem->surface->w;	
+
+	temp.w = elem->surface->w;
 	temp.h = elem->surface->h;
 	l.fill = 1;
 	l.color = 0xff9a9a9a;
@@ -118,16 +118,23 @@ void	ui_render(t_window *win)
 	while (curr != NULL)
 	{
 		elem = curr->content;
-		ui_recalc_elem(elem);
-		ui_render_element(win->surface, elem);
+		if (elem->render && (elem->parent_elem == NULL || elem->parent_elem->render))
+		{
+			ui_recalc_elem(elem);
+			ui_render_element(win->surface, elem);
+		}
 		curr = curr->next;
 	}
 	SDL_UpdateWindowSurface(win->win);
 	curr = win->elements;
 	while (curr != NULL)
 	{
-		ui_clean(win, curr->content);
-		ft_update_element(curr->content);
+		elem = curr->content;
+		if (elem->render && (elem->parent_elem == NULL || elem->parent_elem->render))
+		{
+			ui_clean(win, elem);
+			ft_update_element(elem);
+		}
 		curr = curr->next;
 	}
 }
