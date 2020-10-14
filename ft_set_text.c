@@ -19,7 +19,7 @@ void	ft_set_text(t_text *text, char *txt)
 	else
 	{
 		if (text->text)
-			free(text->text);
+			ft_strdel(&text->text);
 		text->text = ft_strdup(txt);
 	}
 }
