@@ -299,4 +299,7 @@ void			default_click(SDL_Event e, t_element *elem);
 void			single_click(SDL_Event e, t_element *elem);
 void			toggle_click(SDL_Event e, t_element *elem);
 int				ft_keyboard_handler(t_libui *libui);
+int				key_pressed(SDL_Event *e, SDL_Keycode key);
+int				mouse_pressed(SDL_Event *e, Uint8 button);
+int				mouse_hover(SDL_Event *e, t_xywh rect);
 #endif
