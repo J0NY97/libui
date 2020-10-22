@@ -34,7 +34,7 @@ void	ft_event_poller(t_libui *libui)
 	while(SDL_PollEvent(&libui->event))
 	{
 		if (libui->event.type == SDL_QUIT)
-			exit (1);
+			libui->quit = 1;
 		else if (libui->event.type == SDL_WINDOWEVENT &&
 				libui->event.window.event == SDL_WINDOWEVENT_CLOSE &&
 				true_false_popup(0, 0, "Exit the program?"))

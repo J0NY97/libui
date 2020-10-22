@@ -56,14 +56,14 @@ void	ui_clean(t_window *win, t_element *elem)
 
 	if (elem->parent_elem == NULL)
 	{
-		temp.x1 = ft_clamp(elem->coord.x, 0, elem->parent->w);
-		temp.y1 = ft_clamp(elem->coord.y, 0, elem->parent->h);
-		temp.x2 = ft_clamp(temp.x1 + elem->surface->w, 0, win->surface->w);
-		temp.y2 = ft_clamp(temp.y1 + elem->surface->h, 0, win->surface->h);
+		temp.x1 = ft_clamp(elem->coord.x, 0, elem->parent->w - 1);
+		temp.y1 = ft_clamp(elem->coord.y, 0, elem->parent->h - 1);
+		temp.x2 = ft_clamp(temp.x1 + elem->surface->w, 0, win->surface->w - 1);
+		temp.y2 = ft_clamp(temp.y1 + elem->surface->h, 0, win->surface->h - 1);
 		// this while loop is faster than the ft_create_square
 		while (temp.x1 < temp.x2)
 		{
-			temp.y1 = ft_clamp(elem->coord.y, 0, elem->parent->h); // why this?
+			temp.y1 = ft_clamp(elem->coord.y, 0, elem->parent->h - 1); // why this?
 			while (temp.y1 < temp.y2)
 			{
 				set_pixel(win->surface, temp.x1, temp.y1,  win->bg_color);

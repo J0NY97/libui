@@ -6,7 +6,7 @@
 # include <sys/stat.h>
 # include <string.h>
 # include "libft.h"
-# include "ft_printf.h"
+# include "printf.h"
 # include "SDL2/includes/SDL.h"
 # include "SDL2/includes/SDL_ttf.h"
 # include "SDL2/includes/SDL_image.h"

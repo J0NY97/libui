@@ -21,6 +21,7 @@ t_element	*ui_create_surface(t_window *win, t_xywh rel_coord, t_element *parent)
 	info.info = (t_surface *)malloc(sizeof(t_surface));
 	info.info_size = 0;
 	info.f = NULL;
+	info.event_handler = NULL;
 	elem = ft_create_element(info);
 	if (win != NULL)
 		ft_add_element_to_window_elements(win, elem);
