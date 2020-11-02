@@ -56,6 +56,7 @@ SRCS = ft_test_libui.c\
 	   key_pressed.c\
 	   mouse_pressed.c\
 	   mouse_hover.c\
+	   ui_create_textarea.c\
 	   extra_help.c
 OBJS = $(SRCS:.c=.o)
 LIBS = libui.h \

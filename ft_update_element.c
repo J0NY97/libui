@@ -18,7 +18,7 @@ void		ft_update_element(t_element *elem)
 	{
 		if (elem->surface) // just to make so so no free errors
 			SDL_FreeSurface(elem->surface);
-		if (elem->state >= 0 && elem->state <= 2) // to make sure there are that many states if not elem->state, default to 0
+		if (elem->state < 0 && elem->state > 2) // to make sure there are that many states if not elem->state, default to 0
 			elem->state = 0;
 		elem->surface = ft_create_rgba_surface(elem->states[elem->state]->w,
 											elem->states[elem->state]->h);

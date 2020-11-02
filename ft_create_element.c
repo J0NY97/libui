@@ -18,6 +18,7 @@ t_element		*ft_create_element(t_element_info info)
 
 	if (!(elem = (t_element *)malloc(sizeof(t_element))))
 		return (NULL);
+	bzero(elem, sizeof(t_element));
 	elem->parent_elem = info.parent_elem;
 	elem->rel_coord = info.rel_coord;
 	elem->coord = info.rel_coord;
@@ -51,5 +52,7 @@ t_element		*ft_create_element(t_element_info info)
 	ft_update_background(elem->states[1], 0xff0000ff);
 	elem->states[2] = ft_create_rgba_surface(elem->coord.w, elem->coord.h);
 	ft_update_background(elem->states[2], 0xff00ff00);
+	elem->win = info.win;
+	elem->toggleable = info.toggleable;
 	return (elem);
 }

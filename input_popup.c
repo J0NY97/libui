@@ -12,40 +12,6 @@
 
 #include "libui.h"
 
-void		text_area(SDL_Event e, t_element *elem)
-{
-	char		*tmp;
-
-	if (e.type == SDL_MOUSEBUTTONDOWN && elem->loop != 1)
-	{
-		elem->loop = 1;
-		free(elem->text.text);
-		elem->text.text = ft_strdup("<-");
-	}
-	else if (e.type == SDL_TEXTINPUT)
-	{
-		tmp = ft_strndup(elem->text.text, (ft_strlen(elem->text.text) - 2));
-		ft_strdel(&elem->text.text);
-		elem->text.text = ft_strjoiner(tmp, e.text.text, "<-");
-		free(tmp);
-	}
-	else if (elem->loop == 1 && e.key.keysym.sym == SDLK_BACKSPACE && e.type == SDL_KEYDOWN)
-	{
-		tmp = ft_strndup(elem->text.text, (ft_strlen(elem->text.text) - 3));
-		ft_strdel(&elem->text.text);
-		elem->text.text = ft_strjoin(tmp, "<-");
-		free(tmp);
-	}
-	if (e.key.keysym.sym == SDLK_RETURN)
-	{
-		tmp = ft_strndup(elem->text.text, (ft_strlen(elem->text.text) - 2));
-		ft_strdel(&elem->text.text);
-		elem->text.text = ft_strdup(tmp);
-		free(tmp);
-		elem->loop = 0;
-	}
-}
-
 static void		init_button(t_window *win)
 {
 	t_xywh coord;

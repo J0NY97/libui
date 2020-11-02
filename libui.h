@@ -20,6 +20,8 @@ typedef struct	s_surface_info	t_surface_info;
 typedef struct	s_surface		t_surface;
 typedef struct	s_slider_info	t_slider_info;
 typedef struct	s_slider		t_slider;
+typedef struct	s_textarea_info	t_textarea_info;
+typedef struct	s_textarea		t_textarea;
 /////////////
 typedef	struct	s_element		t_element;
 typedef	struct	s_element_info	t_element_info;
@@ -84,6 +86,8 @@ struct	s_element_info
 	t_text		text;
 	t_element	*parent_elem;
 	SDL_Surface	*parent;
+	t_window	*win;
+	int			toggleable;
 };
 
 struct	s_element
@@ -108,6 +112,8 @@ struct	s_element
 	SDL_Surface	*parent;
 	SDL_Surface *surface;
 	SDL_Surface	*states[3];
+	t_window	*win;
+	int			toggleable;
 };
 
 struct			s_button
@@ -115,6 +121,11 @@ struct			s_button
 	int			type;
 	void		*extra;
 	size_t		size;
+};
+
+struct			s_textarea
+{
+	int			hi;
 };
 
 struct			s_slider
@@ -255,6 +266,7 @@ t_element		*ui_create_surface(t_window *win, t_xywh coord, t_element *parent);
 t_element		*ui_create_slider(t_window *win, t_xywh coord, t_element *parent, int min, int max);
 t_element		*ui_create_drop(t_window *win, t_xywh coord, t_element *elem);
 t_element		*ui_create_scrollbar(t_window *win, t_element *elem);
+t_element		*ui_create_textarea(t_window *win, t_xywh rel_coord, t_element *parent);
 t_xywh			ui_init_coords(int x, int y, int w, int h);
 void			ft_default_text(t_text *text, char *txt);
 /*
