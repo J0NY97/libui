@@ -13,7 +13,7 @@
 #include "libui.h"
 #include <dirent.h>
 
-void	add_to_list(t_list **list, char *file)
+void	add_to_lista(t_list **list, char *file)
 {
 	t_list *lst;
 
@@ -40,7 +40,7 @@ t_list 		*dir_open(char *folder_path, unsigned char type, int *size)
 	{
 		if (file->d_type == type && file->d_name[0] != '.')
 		{
-			add_to_list(&list, file->d_name);
+			add_to_lista(&list, file->d_name);
 			*size += 1;
 		}
 	}

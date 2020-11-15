@@ -14,26 +14,29 @@
 
 void	ft_drop_item_function(SDL_Event e, t_element *elem)
 {
-	t_element **items;
+	t_list *item;
 	t_drop_down *dd;
 
 	dd = elem->parent_elem->info;
-	items = dd->items;
-	for (int i = 0; i < dd->item_amount; i++)
+	item = dd->items;
+	while (item)
 	{
-		dd->items[i]->state = 0;
-		dd->items[i]->default_state = 0;
+		((t_element *)item->content)->state = 0;
+		((t_element *)item->content)->default_state = 0;
+		item = item->next;
 	}
 	elem->state = 1;
 	elem->default_state = 1;
 	ft_update_drop(elem->parent_elem);
+	ft_set_text(&elem->parent_elem->text, elem->text.text);
 }
 
 // this should be called when new item is added to the drop menu
 void	ft_update_drop(t_element *elem)
 {
 	t_drop_down *dd;
-	t_element *item;
+	t_list		*curr;
+	t_element	*item;
 	SDL_Rect	temp;
 
 	dd = elem->info;
@@ -41,33 +44,40 @@ void	ft_update_drop(t_element *elem)
 	dd->drop_height = (dd->item_amount + 1) * dd->height;
 	elem->states[1] = ft_create_rgba_surface(elem->coord.w, dd->drop_height);
 	ft_update_background(elem->states[1], 0xff00ff00);
-	for (int i = 0; i < dd->item_amount; i++)
+	curr = dd->items;
+	while (curr)
 	{
-		item = dd->items[i];
+		item = curr->content;
 		temp.x = item->rel_coord.x;
 		temp.y = item->rel_coord.y;
 		temp.w = item->rel_coord.w;
 		temp.h = item->rel_coord.h;
-		ft_update_element(dd->items[i]);
+		ft_update_element(item);
 		SDL_BlitSurface(item->surface, NULL, elem->states[1], &temp);
+		curr = curr->next;
 	}
 }
 
 void	ft_drop_down_function(SDL_Event e, t_element *elem)
 {
+	t_list		*curr;
+	t_element	*item;
 	t_drop_down *dd;
-	SDL_Rect temp;
+	SDL_Rect	temp;
 
 	dd = elem->info;
 	if (e.type == SDL_MOUSEBUTTONDOWN)
 	{
 		if (elem->state == 1)
 		{
-			for (int i = 0; i < dd->item_amount; i++)
+			curr = dd->items;
+			while (curr)
 			{
-				dd->items[i]->coord.x = elem->coord.x + dd->items[i]->rel_coord.x;
-				dd->items[i]->coord.y = elem->coord.y + dd->items[i]->rel_coord.y;
-				dd->items[i]->event_handler(e, dd->items[i]);
+				item = curr->content;
+				item->coord.x = elem->coord.x + item->rel_coord.x;
+				item->coord.y = elem->coord.y + item->rel_coord.y;
+				item->event_handler(e, item);
+				curr = curr->next;
 			}
 		}
 		if (elem->state == 0)

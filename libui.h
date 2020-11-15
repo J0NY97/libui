@@ -145,7 +145,7 @@ struct			s_drop_item
 struct			s_drop_down
 {
 	int			item_amount;
-	t_element	*items[5]; // find on a better put
+	t_list		*items;
 	int			drop_height;
 	int			height;
 	size_t		size;
@@ -217,13 +217,14 @@ void			text_area(SDL_Event e, t_element *elem);
 void			ft_add_element_to_window_elements(t_window *win, t_element *elem);
 void			ft_add_to_non_render_elem_list(t_window *win, t_element *elem);
 void			ft_add_window_to_libui_windows(t_libui *libui, t_window *win);
-void			ui_libui_init(t_libui *libui);
+t_libui 		*ui_libui_init(void);
 void			ft_add_hotkey(t_libui *libui, SDL_Keycode, void (*f)());
 void			ft_set_icon(SDL_Window *window, char *dir);
 SDL_Surface		*ft_scale_surface(SDL_Surface *surface, int w, int h);
 SDL_Surface		*ft_scale_surface_aspect(SDL_Surface *surface, int w, int h);
 SDL_Surface		*ft_create_rgba_surface(int w, int h);
 SDL_Rect		ft_sdl_rect(int x, int y, int w, int h);
+void			add_to_lst(t_list **list, void *new_v, size_t size);
 /*
  ** Popup
 */
@@ -264,7 +265,7 @@ t_element		*ft_create_element(t_element_info info);
 t_element		*ui_create_button(t_window *win, t_xywh coord, t_element *parent);
 t_element		*ui_create_surface(t_window *win, t_xywh coord, t_element *parent);
 t_element		*ui_create_slider(t_window *win, t_xywh coord, t_element *parent, int min, int max);
-t_element		*ui_create_drop(t_window *win, t_xywh coord, t_element *elem);
+t_element		*ui_create_drop(t_window *win, t_xywh coord, t_element *parent);
 t_element		*ui_create_scrollbar(t_window *win, t_element *elem);
 t_element		*ui_create_textarea(t_window *win, t_xywh rel_coord, t_element *parent);
 t_xywh			ui_init_coords(int x, int y, int w, int h);
@@ -274,7 +275,7 @@ void			ft_default_text(t_text *text, char *txt);
 */
 void			ft_update_background(SDL_Surface *surface, Uint32 color);
 void			ft_create_text(t_text *text);
-void			ft_drop_down_add_item(t_window *win, t_element *drop, char *name);
+void			ft_drop_down_add_item(t_element *drop, char *name);
 void			ft_slider_function(SDL_Event e, t_element *elem);
 void			ft_update_slider_bar(int click_x, int click_y, t_element *elem);
 void			ft_update_drop(t_element *elem);

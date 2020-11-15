@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ui_libui_init.c                                    :+:      :+:    :+:   */
+/*   ft_drop_down.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsalmi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/30 14:49:35 by jsalmi            #+#    #+#             */
-/*   Updated: 2020/09/19 11:29:57 by jsalmi           ###   ########.fr       */
+/*   Created: 2020/08/29 11:11:57 by jsalmi            #+#    #+#             */
+/*   Updated: 2020/09/19 11:13:47 by jsalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libui.h"
 
-t_libui	*ui_libui_init(void)
+void	add_to_lst(t_list **list, void *new_v, size_t size)
 {
-	t_libui *libui;
+	t_list *lst;
 
-	if (!(libui = (t_libui *)malloc(sizeof(t_libui))))
-		exit (1);
-	SDL_Init(SDL_INIT_VIDEO);
-	TTF_Init();
-	IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
-	libui->windows = NULL;
-	libui->hotkeys = NULL;
-	libui->quit = 0;
-	libui->drag_file = NULL;
-	return (libui);
+	lst = ft_lstnew(0, 0);
+	lst->content = new_v;
+	lst->content_size = size;
+	if (*list == NULL)
+		*list = lst;
+	else
+		ft_lstadd(list, lst);
 }

@@ -26,11 +26,11 @@ t_element *ui_create_drop(t_window *win, t_xywh rel_coord, t_element *parent)
 	ft_add_element_to_window_elements(win, elem);
 	{
 		dd = elem->info;
-		//dd->items = NULL; // malloc here if you already know the max amount of items you want to add
+		dd->items = NULL;
 		dd->item_amount = 0;
 		dd->height = elem->coord.h;
 		dd->drop_height = (dd->item_amount + 1) * elem->coord.h;
 		ft_update_drop(elem);
-	}	
+	}
 	return (elem);
 }
