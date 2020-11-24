@@ -31,11 +31,10 @@ void	ft_create_text(t_text *text)
 	}
 	temp.w = tsurf->w;
 	temp.h = tsurf->h;
-	if (text->centered == 1)
-	{
-		temp.x = (text->parent->w / 2) - (tsurf->w / 2);
+	if (text->centered_y == 1 || text->centered == 1)
 		temp.y = (text->parent->h / 2) - (tsurf->h / 2);
-	}
+	if (text->centered_x == 1 || text->centered == 1)
+		temp.x = (text->parent->w / 2) - (tsurf->w / 2);
 	SDL_BlitSurface(tsurf, NULL, text->parent, &temp);
 	SDL_FreeSurface(tsurf);
 }

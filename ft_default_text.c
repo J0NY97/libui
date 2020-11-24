@@ -17,6 +17,8 @@ void	ft_default_text(t_text *text, char *txt)
 	text->x = 0;
 	text->y = 0;
 	text->centered = 0;
+	text->centered_y = 0;
+	text->centered_x = 0;
 	text->parent = NULL;
 	if (txt != NULL)
 	{

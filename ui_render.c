@@ -120,6 +120,11 @@ void	ui_render(t_window *win)
 		elem = curr->content;
 		if (elem->render && (elem->parent_elem == NULL || elem->parent_elem->render))
 		{
+			if (elem->text.set_text)
+			{
+				elem->text.parent = elem->surface;
+				ft_create_text(&elem->text);
+			}
 			ui_recalc_elem(elem);
 			ui_render_element(win->surface, elem);
 		}

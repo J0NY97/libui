@@ -27,7 +27,7 @@ t_element_info	ft_default_elem_info(t_window *win,
 	info.extra_info = NULL;
 	info.info = NULL;
 	info.set_text = 0;
-	info.shadow = 1;
+	info.shadow = 0;
 	info.win = win;
 	info.toggleable = 0;
 	return (info);

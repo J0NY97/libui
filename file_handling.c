@@ -49,7 +49,7 @@ int		save_image(SDL_Surface *img, char *file)
 char	*drag_and_drop(SDL_Event e)
 {
 	char *black_dhide;
-	
+
 	if (e.type == SDL_DROPFILE)
 	{
 		ft_putstr("drop event happeneed\n");
