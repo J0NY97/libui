@@ -95,6 +95,7 @@ struct	s_element_info
 struct	s_element
 {
 	int			render;
+	int			*parent_render;
 	int			state; //0 = press, 1 = hover, 2 = click
 	int			default_state;
 	int			statique;

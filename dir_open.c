@@ -13,24 +13,12 @@
 #include "libui.h"
 #include <dirent.h>
 
-void	add_to_lista(t_list **list, char *file)
-{
-	t_list *lst;
-
-	lst = ft_lstnew(0, 0);
-	lst->content = ft_strdup(file);
-	lst->content_size = 0;
-	if (list == NULL)
-		(*list) = lst;
-	else
-		ft_lstadd(&(*list), lst);
-}
-
 t_list 		*dir_open(char *folder_path, unsigned char type, int *size)
 {
 	t_list			*list;
 	DIR				*dir;
 	struct	dirent	*file;
+	char *temp;
 
 	*size = 0;
 	list = NULL;
@@ -40,7 +28,8 @@ t_list 		*dir_open(char *folder_path, unsigned char type, int *size)
 	{
 		if (file->d_type == type && file->d_name[0] != '.')
 		{
-			add_to_lista(&list, file->d_name);
+			temp = ft_strdup(file->d_name);
+			add_to_list(&list, temp, sizeof(char *));
 			*size += 1;
 		}
 	}

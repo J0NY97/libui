@@ -118,7 +118,7 @@ void	ui_render(t_window *win)
 	while (curr != NULL)
 	{
 		elem = curr->content;
-		if (elem->render && (elem->parent_elem == NULL || elem->parent_elem->render))
+		if (elem->render && (elem->parent_elem == NULL || *elem->parent_render))
 		{
 			if (elem->text.set_text)
 			{
@@ -135,7 +135,7 @@ void	ui_render(t_window *win)
 	while (curr != NULL)
 	{
 		elem = curr->content;
-		if (elem->render && (elem->parent_elem == NULL || elem->parent_elem->render))
+		if (elem->render && (elem->parent_elem == NULL || *elem->parent_render))
 		{
 			ui_clean(win, elem);
 			ft_update_element(elem);

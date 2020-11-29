@@ -30,6 +30,13 @@ t_element		*ft_create_element(t_element_info info)
 	else
 		elem->info = info.info;
 	elem->render = 1;
+	if (elem->parent_elem != NULL)
+	{
+		if (elem->parent_elem->parent_elem != NULL)
+			elem->parent_render = elem->parent_elem->parent_render;
+		else
+			elem->parent_render = &elem->parent_elem->render;
+	}
 	elem->shadow = info.shadow;
 	elem->bg_color = info.bg_color;
 	elem->extra_info = info.extra_info;

@@ -21,7 +21,7 @@ void	call_all_element_event_handlers(t_libui *libui, t_window *win)
 	while (curr != NULL)
 	{
 		elem = curr->content;
-		if (elem->render && elem->event_handler && (elem->parent_elem == NULL || elem->parent_elem->render))
+		if (elem->render && elem->event_handler && (elem->parent_elem == NULL || elem->parent_render))
 			elem->event_handler(libui->event, elem);
 		curr = curr->next;
 	}
